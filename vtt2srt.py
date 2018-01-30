@@ -21,6 +21,7 @@ limitations under the License.
 
 import argparse
 import re
+import sys
 
 __author__ = "Korvin F. Ezüst"
 __copyright__ = "Copyright (c) 2018, Korvin F. Ezüst"
@@ -63,8 +64,13 @@ enum = enumerate(sbl)
 next(enum)
 nel = [str(i) or "\n" + str(next(enum)[0]) for i in sbl]
 
+# Remove WebVTT headers if any
+for i, item in enumerate(nel):
+    if item == "\n1":
+        break
+
 # Write SRT file
 with open(args.file + ".srt", "w") as f:
-    f.write("\n".join(nel[3:]))
+    f.write("\n".join(nel[i:]))
 
 print("SRT file created:", args.file + ".srt")
