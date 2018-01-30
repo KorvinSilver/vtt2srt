@@ -27,9 +27,10 @@ __copyright__ = "Copyright (c) 2018, Korvin F. Ezüst"
 __license__ = "Apache 2.0"
 __version__ = "1.0"
 __email__ = "dev@korvin.eu"
-__status__ = "Development"
+__status__ = "Working"
 
-parser = argparse.ArgumentParser(description="Convert a vtt file to srt")
+parser = argparse.ArgumentParser(
+    description="Convert a WebVTT Document to a SubRip Subtitle")
 parser.add_argument("file", help="vtt file to convert")
 args = parser.parse_args()
 
