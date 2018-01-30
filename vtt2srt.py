@@ -55,7 +55,8 @@ for i in range(len(lines[:-1])):
         continue
     else:
         sbl.append(lines[i])
-sbl.append(lines[-1])
+if lines[-1] != "":
+    sbl.append(lines[-1])
 
 # Place a number before each time code (number empty lines)
 enum = enumerate(sbl)
@@ -64,6 +65,6 @@ nel = [str(i) or "\n" + str(next(enum)[0]) for i in sbl]
 
 # Write SRT file
 with open(args.file + ".srt", "w") as f:
-    f.write("\n".join(nel[3:-1]))
+    f.write("\n".join(nel[3:]))
 
 print("SRT file created:", args.file + ".srt")
